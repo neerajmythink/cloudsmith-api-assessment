@@ -3,7 +3,7 @@
 # Create a new entitlement token in a repository with EULA acceptance is required for this token and only supports 2 downloads.
 export NAMESPACE="cloudsmith-org-neeraj" # Replace with your actual namespace
 export API_KEY=$CLOUDSMITH_API_KEY # Ensure you have set the CLOUDSMITH_API_KEY environment variable with your API key
-export REPO_NAME="assessment-repo" # You can change the repository name as needed
+export REPO_NAME="api-assessment-repo" # You can change the repository name as needed
 export TOKEN_NAME="custom-ET" # Name for the entitlement token
 export DOWNLOAD_LIMIT=2 # Set the download limit for the entitlement token
 
@@ -19,8 +19,10 @@ create_entitlement_token() {
   {
     "name": "'${TOKEN_NAME}'",
     "limit_num_downloads": '"${DOWNLOAD_LIMIT}"',
-    "is_active": true,
+    "access_private_broadcasts": true,
     "eula_required": true,
+    "is_active": true,
+    "limit_bandwidth_unit": "Byte",
     "scheduled_reset_period": "Never Reset"
   }
   '| jq '.' | jq '.token'

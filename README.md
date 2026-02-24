@@ -11,3 +11,7 @@ sample example of product and feature of cloudsmith-api
 ```bash
 ./repo_list.sh
 ```
+3. Update a repo
+```bash
+./repo_update.sh
+```
