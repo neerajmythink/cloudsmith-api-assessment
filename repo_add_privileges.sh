@@ -113,14 +113,14 @@ update_user_privileges() {
             '
 }
 
-echo "#### Adding a team to the namespace '$NAMESPACE' and giving Write access to '$TEAM_NAME' team for the repository '$REPO_NAME' ####"
+echo -e "\033[35m# Adding a team to the namespace '$NAMESPACE' and giving Write access to '$TEAM_NAME' team for the repository '$REPO_NAME'\033[0m"
 add_team
 add_team_privileges
 
-echo "#### Adding a service account to the namespace '$NAMESPACE' and giving Admin access to '$SERVICE_NAME' account for the repository '$REPO_NAME' ####"
+echo -e "\033[35m# Adding a service account to the namespace '$NAMESPACE' and giving Admin access to '$SERVICE_NAME' account for the repository '$REPO_NAME'\033[0m"
 export SERVICE_ACCOUNT_SLUG=$(add_service_account)
 add_service_account_privileges
 
-echo "#### Giving current user Admin access to the repository '$REPO_NAME' of namespace '$NAMESPACE' ####"
+echo -e "\033[35m# Giving current user Admin access to the repository '$REPO_NAME' of namespace '$NAMESPACE'\033[0m"
 export CURRENT_USER=$(get_current_user)
 update_user_privileges
