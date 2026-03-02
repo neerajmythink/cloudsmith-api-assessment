@@ -28,5 +28,5 @@ create_entitlement_token() {
   '| jq '.' | jq '.token'
 }
 
-echo "#### Creating an entitlement token for repository: ${REPO_NAME} in namespace: ${NAMESPACE} ####"
+echo -e "\033[35m#### Creating an entitlement token for repository: ${REPO_NAME} in namespace: ${NAMESPACE} ####\033[0m"
 create_entitlement_token
