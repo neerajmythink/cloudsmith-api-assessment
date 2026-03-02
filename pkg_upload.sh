@@ -49,7 +49,26 @@ upload_raw_package() {
             {
                 "package_file": "'"@${PKG_PATH}"'"
             }
-  ' | jq '.upload_id'
+  ' | jq -r '.upload_id'
 }
-UPLOAD_RAW_PACKAGE_RESPONSE=$(upload_raw_package)
+export UPLOAD_RAW_PACKAGE_RESPONSE=$(upload_raw_package)
 echo "# Step 3: Raw package upload ID: $UPLOAD_RAW_PACKAGE_RESPONSE"
+
+upload_package() {
+  curl -sS\
+     --request POST \
+     --url "https://api.cloudsmith.io/v1/packages/${NAMESPACE}/${REPO_NAME}/upload/npm/" \
+     --header 'accept: application/json' \
+     --header 'content-type: application/json' \
+     --header "X-Api-Key: ${API_KEY}" \
+     --data '
+{
+    "npm_dist_tag": "latest",
+    "package_file": "'"${UPLOAD_RAW_PACKAGE_RESPONSE}"'",
+    "checksum_md5": "'"${MD5_HASH}"'"
+}
+' | jq '.'
+}
+
+UPLOAD_PACKAGE_RESPONSE=$(upload_package)
+echo "# Step 4: Final package upload response: ${UPLOAD_PACKAGE_RESPONSE}"
