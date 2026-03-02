@@ -25,5 +25,5 @@ create_license_policy() {
 ' | jq
 }
 
-echo "#### Creating a license policy for namespace: '${NAMESPACE}' with name as 'Quarantine Unknown Licenses' ####"
+echo -e "\033[35m# Creating a license policy for namespace: '${NAMESPACE}' with name as 'Quarantine Unknown Licenses' \033[0m"
 create_license_policy
