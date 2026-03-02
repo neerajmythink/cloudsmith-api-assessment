@@ -2,7 +2,7 @@
 
 export NAMESPACE="cloudsmith-org-neeraj" # Replace with your actual namespace
 export API_KEY=$CLOUDSMITH_API_KEY       # Ensure you have set the CLOUDSMITH_API_KEY environment variable with your API key
-export REPO_NAME="api-assessment-repoo"       # You can change the repository name as needed
+export REPO_NAME="api-assessment-repo"  # You can change the repository name as needed
 export REPO_DESC="This repository is created for API assessment purposes." # You can change the repository description as needed
 
 # function to create a repository with response recorded in output.txt
@@ -22,5 +22,5 @@ create_repo() {
 }
 
 # Create a new repository
-echo "#### Creating a new repository: '${REPO_NAME}' in namespace: '${NAMESPACE}' ####"
+echo -e "\033[35m#### Creating a new repository: '${REPO_NAME}' in namespace: '${NAMESPACE}' with 'slug_perm' as ####\033[0m"
 create_repo
