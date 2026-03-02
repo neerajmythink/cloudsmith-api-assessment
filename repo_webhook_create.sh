@@ -39,5 +39,7 @@ create_webhook() {
 ' | jq '.slug_perm + " - " + .created_at + " - " + .created_by'
 }
 
-echo "#### Creating a webhook for 'npm' packages in '${REPO_NAME}' in namespace: '${NAMESPACE}' with 'slug_perm' as ####"
+# print echo statement to indicate the start of the webhook creation process in pink color
+echo -e "\033[35m#### Creating a webhook for 'npm' packages in '${REPO_NAME}' in namespace: '${NAMESPACE}' with 'slug_perm' as ####\033
+echo 'slug_perm - created_at - created_by'
 create_webhook
