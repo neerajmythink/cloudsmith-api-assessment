@@ -8,9 +8,11 @@ get_repo_list() {
     --request GET \
     --url "https://api.cloudsmith.io/v1/repos/${NAMESPACE}/?sort=-created_at" \
     --header 'accept: application/json' \
-    --header "X-Api-Key: ${API_KEY}" | jq '.[] | .name'
+    --header "X-Api-Key: ${API_KEY}" | jq '.[]' | jq -r '.created_at + " - " + (.is_private | tostring) + " - " + .name'
 }
 
-echo "#### Fetching repositories in namespace: ${NAMESPACE} ####"
+# Print the echo statement in pink color
+echo -e "\033[35m#### Fetching repositories in namespace: ${NAMESPACE} ####\033[0m"
+echo -e "\033[36mCreated At - Is Private - Name\033[0m"
 REPOS=$(get_repo_list)
 echo "$REPOS"
