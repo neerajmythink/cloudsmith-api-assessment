@@ -20,3 +20,7 @@ To run the scripts, navigate to the directory containing the scripts and execute
 - To list webhooks: `./repo_webhook_list.sh`
 - To set up an upstream proxy: `./repo_upstream_proxy.sh`
 - To update a repository: `./repo_update.sh`
+- To add privilages to a repository: `./repo_add_privileges.sh`
+- To list policies: `./policy_list.sh`
+- To craate a license policy: `./policy_create_licence.sh`
+- To create a vulnerability policy: `./policy_create_vulnerability.sh`
