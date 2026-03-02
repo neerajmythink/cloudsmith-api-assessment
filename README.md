@@ -26,4 +26,5 @@ To run the scripts, navigate to the directory containing the scripts and execute
 - To create a vulnerability policy: `./policy_create_vulnerability.sh`
 - To create a policy: `./policy_create.sh`
 - To list vulnerability scan results: `./policy_list_vulnerability_scan.sh`
-- 
+- To package upload: `./pkg_upload.sh`
+- To schedule a package scan: `./pkg_schedule_scan.sh`
