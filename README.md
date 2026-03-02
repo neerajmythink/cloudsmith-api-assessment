@@ -28,3 +28,4 @@ To run the scripts, navigate to the directory containing the scripts and execute
 - To list vulnerability scan results: `./policy_list_vulnerability_scan.sh`
 - To package upload: `./pkg_upload.sh`
 - To schedule a package scan: `./pkg_schedule_scan.sh`
+- To remove a teg from a package: `./pkg_remove_tag.sh`

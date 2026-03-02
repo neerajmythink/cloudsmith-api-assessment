@@ -2,9 +2,9 @@
 
 # Remove tags from an existing package in the repository
 export NAMESPACE="cloudsmith-org-neeraj" # Replace with your actual namespace
-export REPO_NAME="assessment-repo" # You can change the repository name as needed
+export REPO_NAME="example_repo_through_cli" # You can change the repository name as needed
 export API_KEY=$CLOUDSMITH_API_KEY # Ensure you have set the CLOUDSMITH_API_KEY environment variable with your API key
-export PKG_IDENTIFIER="cloudsmith_python_native_example-100-py2py3-n-c4uo" # Replace with the intended package identifier
+export PKG_IDENTIFIER="csm-cloudsmith-npm-cli-example-101tgz-zunq" # Replace with the intended package identifier
 
 # Function to remove tags from an existing package in the repository
 remove_tags() {
@@ -19,12 +19,11 @@ remove_tags() {
               "action": "Remove",
               "is_immutable": false,
               "tags": [
-                "first",
-                "added"
+                "kk"
               ]
             }
 ' | jq
 }
 
-echo "#### Removing tags from an existing package '${PKG_IDENTIFIER}' in repository '${REPO_NAME}' ####."
+echo -e "\033[35m# Removing tags from an existing package '${PKG_IDENTIFIER}' in repository '${REPO_NAME}'.\033[0m"
 remove_tags
