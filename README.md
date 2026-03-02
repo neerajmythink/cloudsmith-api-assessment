@@ -18,4 +18,5 @@ To run the scripts, navigate to the directory containing the scripts and execute
 - To create a entitlement: `./repo_create_entit-tk.sh`
 - To create a webhook: `./repo_webhook_create.sh`
 - To list webhooks: `./repo_webhook_list.sh`
-- To
+- To set up an upstream proxy: `./repo_upstream_proxy.sh`
+- To update a repository: `./repo_update.sh`

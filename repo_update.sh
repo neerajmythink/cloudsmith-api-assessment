@@ -4,7 +4,7 @@
 
 export NAMESPACE="cloudsmith-org-neeraj" # Replace with your actual namespace
 export API_KEY=$CLOUDSMITH_API_KEY # Ensure you have set the CLOUDSMITH_API_KEY environment variable with your API key
-export REPO_NAME="assessment-repo" # You can change the repository name as needed
+export REPO_NAME="example_repo_through_cli" # You can change the repository name as needed
 
 # Function to update the repository description and type
 update_repo() {
