@@ -2,9 +2,9 @@
 
 # Add tags to an existing package in the repository
 export NAMESPACE="cloudsmith-org-neeraj" # Replace with your actual namespace
-export REPO_NAME="assessment-repo" # You can change the repository name as needed
+export REPO_NAME="qa" # You can change the repository name as needed
 export API_KEY=$CLOUDSMITH_API_KEY # Ensure you have set the CLOUDSMITH_API_KEY environment variable with your API key
-export PKG_IDENTIFIER="cloudsmith_python_native_example-100-py2py3-n-c4uo" # Replace with the intended package identifier
+export PKG_IDENTIFIER="cloudsmith_python_native_example-100-py2py3-n-73um" # Replace with the intended package identifier
 
 # Function to add tags to an existing package in the repository
 add_tags() {

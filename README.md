@@ -12,23 +12,32 @@ this repo contains the shell scripts to perform the API assessment for cloudsmit
 
 To run the scripts, navigate to the directory containing the scripts and execute them using the command line. For example:
 
-- To list repositories: `./repo_list.sh`
+## Task 1: Create and Manage Repositories
 - To create a repository: `./repo_create.sh`
+- To list repositories: `./repo_list.sh`
 - To update a repository: `./repo_update.sh`
 - To create a entitlement: `./repo_create_entit-tk.sh`
+- To add privilages to a repository: `./repo_add_privileges.sh`
+- To set up an upstream proxy: `./repo_upstream_proxy.sh`
 - To create a webhook: `./repo_webhook_create.sh`
 - To list webhooks: `./repo_webhook_list.sh`
-- To set up an upstream proxy: `./repo_upstream_proxy.sh`
-- To update a repository: `./repo_update.sh`
-- To add privilages to a repository: `./repo_add_privileges.sh`
-- To list policies: `./policy_list.sh`
-- To create a license policy: `./policy_create_licence.sh`
-- To create a vulnerability policy: `./policy_create_vulnerability.sh`
-- To create a policy: `./policy_create.sh`
-- To list vulnerability scan results: `./policy_list_vulnerability_scan.sh`
+
+## Task 2: Package Management
 - To package upload: `./pkg_upload.sh`
-- To schedule a package scan: `./pkg_schedule_scan.sh`
-- To remove a teg from a package: `./pkg_remove_tag.sh`
 - To list packages: `./pkg_list.sh`
 - To copy a package: `./pkg_copy.sh`
+- To schedule a package scan: `./pkg_schedule_scan.sh`
+- To add a tag to a package: `./pkg_add_tag.sh`
+- To remove a tag from a package: `./pkg_remove_tag.sh`
+
+## Task 3: Policy Management
+- To create a policy: `./policy_create.sh`
+- To create a license policy: `./policy_create_licence.sh`
+- To create a vulnerability policy: `./policy_create_vulnerability.sh`
+- To list vulnerability scan results: `./policy_list_vulnerability_scan.sh`
+- To list policies: `./policy_list.sh`
+
+
+
+
 

@@ -3,7 +3,7 @@
 # List all packages in a given repository  
 
 export NAMESPACE="cloudsmith-org-neeraj" # Replace with your actual namespace
-export REPO_NAME="api-assessment-repo" # You can change the repository name as needed
+export REPO_NAME="example_repo_through_cli" # You can change the repository name as needed
 export API_KEY=$CLOUDSMITH_API_KEY # Ensure you have set the CLOUDSMITH_API_KEY environment variable with your API key
 
 # Function to list all packages in the repository
