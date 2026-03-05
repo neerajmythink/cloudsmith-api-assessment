@@ -3,72 +3,38 @@
 # Upload a new npm package to the existing repository 
 
 export NAMESPACE="cloudsmith-org-neeraj" # Replace with your actual namespace
-export REPO_NAME="api-assessment-repo" # You can change the repository name as needed
+export REPO_NAME="test-repo-2" # You can change the repository name as needed
 export API_KEY=$CLOUDSMITH_API_KEY # Ensure you have set the CLOUDSMITH_API_KEY environment variable with your API key
-export PKG_PATH="acorn-8.8.2.tgz" # Path to your package file, change as needed
-
-# Function to MD5 hash of the package file
-calculate_md5() {
-  if [[ -f "$PKG_PATH" ]]; then
-    md5sum "$PKG_PATH" | awk '{ print $1 }'
-  else
-    echo "Package file not found: $PKG_PATH"
-    exit 1
-  fi
-}
-MD5_HASH=$(calculate_md5)
-echo "# Step 1: MD5 hash of the package: $MD5_HASH"
-
-# Function to validate package upload for npm with status code 200 for successful validation, 400 for failed validation
-validate_package_upload() {
-  curl -sS\
-    --write-out "%{http_code}" \
-    --request POST \
-    --url "https://api.cloudsmith.io/v1/packages/${NAMESPACE}/${REPO_NAME}/validate-upload/npm/" \
-    --header 'accept: application/json' \
-    --header 'content-type: application/json' \
-    --header "X-Api-Key: ${API_KEY}" \
-    --data '
-  {
-      "package_file": "'"${PKG_PATH}"'"
-  }
-  ' | jq
-}
-VALIDATE_PACKAGE_UPLOAD_STATUS=$(validate_package_upload)
-echo "# Step 2: Package upload validation status: $VALIDATE_PACKAGE_UPLOAD_STATUS"
+export PKG_PATH="your-package-name-1.0.1.whl" # Path to your package file, change as needed
 
 # Function to upload the package to the repository in raw format
 upload_raw_package() {
   curl -sS\
-    --request POST \
-    --url "https://upload.cloudsmith.io/${NAMESPACE}/${REPO_NAME}/upload/raw/" \
+    --request PUT \
+    --url "https://upload.cloudsmith.io/${NAMESPACE}/${REPO_NAME}/${PKG_PATH}/" \
     --header 'accept: application/json' \
     --header 'content-type: application/json' \
     --header "X-Api-Key: ${API_KEY}" \
-    --data '
-            {
-                "package_file": "'"@${PKG_PATH}"'"
-            }
-  ' | jq -r '.upload_id'
+    --form "package_file=@${PKG_PATH}" \
+    | jq -r '.identifier'
 }
-export UPLOAD_RAW_PACKAGE_RESPONSE=$(upload_raw_package)
-echo "# Step 3: Raw package upload ID: $UPLOAD_RAW_PACKAGE_RESPONSE"
+
+export IDENTIFIER=$(upload_raw_package)
+echo "# Step 1: Raw package upload ID: $IDENTIFIER"
 
 upload_package() {
   curl -sS\
      --request POST \
-     --url "https://api.cloudsmith.io/v1/packages/${NAMESPACE}/${REPO_NAME}/upload/npm/" \
+     --url "https://api.cloudsmith.io/v1/packages/${NAMESPACE}/${REPO_NAME}/upload/python/" \
      --header 'accept: application/json' \
      --header 'content-type: application/json' \
      --header "X-Api-Key: ${API_KEY}" \
      --data '
 {
-    "npm_dist_tag": "latest",
-    "package_file": "'"${UPLOAD_RAW_PACKAGE_RESPONSE}"'",
-    "checksum_md5": "'"${MD5_HASH}"'"
+    "package_file": "'"${IDENTIFIER}"'"
 }
 ' | jq '.'
 }
 
-UPLOAD_PACKAGE_RESPONSE=$(upload_package)
-echo "# Step 4: Final package upload response: ${UPLOAD_PACKAGE_RESPONSE}"
+export UPLOAD_PACKAGE=$(upload_package)
+echo "# Step 2: Final package upload response: $UPLOAD_PACKAGE"
