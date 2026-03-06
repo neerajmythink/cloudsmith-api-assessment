@@ -1,7 +1,6 @@
 #!/usr/bin/env bash
 
-# Upload a new npm package to the existing repository 
-
+# Upload a new python package to the existing repository
 export NAMESPACE="cloudsmith-org-neeraj" # Replace with your actual namespace
 export REPO_NAME="test-repo-2" # You can change the repository name as needed
 export API_KEY=$CLOUDSMITH_API_KEY # Ensure you have set the CLOUDSMITH_API_KEY environment variable with your API key
